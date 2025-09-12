@@ -32,6 +32,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+*_env/
 
 # Data files
 *.csv
@@ -41,6 +42,9 @@ venv.bak/
 *.hdf5
 *.parquet
 *.feather
+
+# Exception: Include lab datasets
+!Lab */**/*.csv
 
 # Model files
 *.pkl
