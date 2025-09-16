@@ -1,0 +1,23 @@
+# Virtual env
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data and temp artifacts
+data/**
+!data/README.md
+temp_data/**
+oxford_pets.tar.gz
+
+# Models / checkpoints
+*.h5
+*.hdf5
+*.ckpt
+
+# OS
+.DS_Store
