@@ -74,8 +74,6 @@ tmp/
 temp/
 
 # Lab 03 additional resources (not part of implementation)
-Lab 03/diabetes[1].csv
-Lab 03/insurance[1].csv
-Lab 03/yahoo_data[1].xlsx
-Lab 03/Lab 03 - Linear Regression, Cost Function and Gradient Descent.pdf
-Lab 03/Python Libraries.pdf
+Lab 03/*\[1\].csv
+Lab 03/*\[1\].xlsx
+Lab 03/*.pdf
