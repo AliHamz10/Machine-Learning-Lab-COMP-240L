@@ -115,10 +115,10 @@ The Titanic Survival Prediction model achieved excellent performance:
 
 **Ali Hamza**  
 Registration Number: **B23F0063AI106**
-BS(AI) - F23, Semester 5th  
+BS(AI) - F23 Red, Semester 5th  
 Machine Learning Lab - COMP 240L
 
 **Zarmeena Jawad**  
 Registration Number: **B23F0115AI125**
-BS(AI) - F23, Semester 5th  
+BS(AI) - F23 Red, Semester 5th  
 Machine Learning Lab - COMP 240L
