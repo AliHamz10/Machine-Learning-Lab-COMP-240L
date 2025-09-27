@@ -1,0 +1,16 @@
+Assignment 01: Machine Learning Analysis Results
+==================================================
+
+Dataset: Adult Income Dataset
+Total samples: 32,537
+Total features: 106
+
+Model Performance:
+------------------------------
+Logistic Regression: Accuracy=0.8622, ROC-AUC=0.9156
+Random Forest: Accuracy=0.8508, ROC-AUC=0.8949
+Gradient Boosting: Accuracy=0.8728, ROC-AUC=0.9274
+SVM: Accuracy=0.8568, ROC-AUC=0.9043
+
+Best Model: Gradient Boosting
+Best ROC-AUC: 0.9274
