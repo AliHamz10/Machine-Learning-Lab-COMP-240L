@@ -1,7 +1,7 @@
 """
 Assignment 01: Machine Learning Analysis
 Class: BSAI F23 Red
-Student: [Student Number]
+Student: B23F0063AI106
 
 Business Problem: Wine Quality Prediction for Market Segmentation
 Objective: Predict wine quality to help wineries segment their products and optimize pricing strategies
