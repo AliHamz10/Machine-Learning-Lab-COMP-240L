@@ -154,16 +154,22 @@ def gradient_descent(X, y, theta, bias, learning_rate, epochs):
 ## File Structure
 ```
 Lab 03/
-├── Practices/
+├── Practices/                                    # Individual practice notebooks
 │   ├── Practice_1_Single_Variable_Linear_Regression.ipynb
 │   ├── Practice_2_Multi_Variable_Linear_Regression.ipynb
 │   ├── Practice_3_Classification_Metrics.ipynb
 │   └── Practice_4_Cost_Function_Gradient_Descent.ipynb
-├── Lab Tasks/
+├── Lab Tasks/                                    # Main lab assignment
 │   ├── Lab_03_Insurance_Dataset_Analysis.ipynb
 │   └── Insurance.csv
-├── diabetes.csv
-└── README.md
+├── diabetes.csv                                  # Diabetes dataset
+├── insurance[1].csv                             # Additional insurance data
+├── yahoo_data[1].xlsx                           # Financial data
+├── Lab 03 - Linear Regression, Cost Function and Gradient Descent.pdf
+├── Python Libraries.pdf                         # Library documentation
+├── requirements.txt                             # Python dependencies
+├── run_lab03_analysis.py                        # Analysis script
+└── README.md                                    # This documentation
 ```
 
 ## Usage Instructions

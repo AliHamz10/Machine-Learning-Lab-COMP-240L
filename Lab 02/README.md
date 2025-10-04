@@ -18,12 +18,21 @@ This lab implements a comprehensive linear regression analysis on an insurance d
 - **Features**: age, gender, bmi, children, smoker, region
 - **Target**: charges (medical insurance charges)
 
-## Files
+## Files Structure
 
-1. **`Lab_02_Linear_Regression_Analysis.ipynb`** - Comprehensive Jupyter notebook with detailed analysis
-2. **`run_lab02_analysis.py`** - Python script for quick execution
-3. **`requirements.txt`** - Required Python packages
-4. **`insurance.csv`** - Dataset file
+```
+Lab 02/
+├── Lab_02_Linear_Regression_Analysis.ipynb    # Comprehensive Jupyter notebook
+├── run_lab02_analysis.py                      # Python script for execution
+├── requirements.txt                            # Python dependencies
+├── insurance.csv                               # Insurance dataset
+├── lab02_comprehensive_analysis.png            # Analysis visualization
+├── lab02_env/                                  # Virtual environment
+│   ├── bin/                                    # Python executables
+│   ├── lib/                                    # Installed packages
+│   └── pyvenv.cfg                              # Environment config
+└── README.md                                   # This documentation
+```
 
 ## Quick Start
 

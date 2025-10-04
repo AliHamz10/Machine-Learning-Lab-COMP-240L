@@ -387,7 +387,3 @@ The study fulfills all assignment requirements by demonstrating comprehensive da
 [7] W. McKinney, "Data structures for statistical computing in Python," in _Proceedings of the 9th Python in Science Conference_, 2010, pp. 51-56.
 
 [8] J. D. Hunter, "Matplotlib: A 2D graphics environment," _Computing in Science & Engineering_, vol. 9, no. 3, pp. 90-95, 2007.
-
----
-
-**Word Count:** 1,847  (excluding references and formatting)
