@@ -7,13 +7,13 @@
 
 ## Abstract
 
-This report presents a comprehensive machine learning analysis for customer churn prediction in the telecommunications industry, addressing the critical business challenge of customer retention and attrition management. The study utilizes the IBM Telco Customer Churn dataset, containing 7,043 customer records with 19 demographic and service-related features. Four machine learning algorithms were implemented and evaluated: Random Forest, Gradient Boosting, Logistic Regression, and Support Vector Machine. The Random Forest classifier achieved the highest performance with 80.2% accuracy, demonstrating the feasibility of automated churn prediction for business applications including customer retention, targeted marketing, and resource optimization.
+This report presents a comprehensive machine learning analysis for income prediction in the financial services industry, addressing the critical business challenge of credit assessment and financial decision making. The study utilizes the UCI Adult Income dataset, containing 32,561 individual records with 14 demographic and economic features. Four machine learning algorithms were implemented and evaluated: Random Forest, Gradient Boosting, Logistic Regression, and Support Vector Machine. The Gradient Boosting classifier achieved the highest performance with 86.9% accuracy, demonstrating the feasibility of automated income prediction for business applications including credit assessment, loan approval, and financial planning services.
 
 ## 1. Introduction
 
-The telecommunications industry faces significant challenges in customer retention, with high customer acquisition costs and increasing competition leading to substantial revenue losses from customer churn. Traditional churn management relies on reactive approaches and manual customer analysis, which are inefficient and often too late to prevent customer loss. This study addresses these challenges by developing machine learning models that can predict customer churn based on demographic and service usage patterns.
+The financial services industry faces significant challenges in credit assessment and risk management, with traditional methods relying on limited financial data and manual evaluation processes that are time-consuming and often inconsistent. The need for accurate income prediction is critical for loan approval, credit scoring, and financial planning services. This study addresses these challenges by developing machine learning models that can predict individual income levels based on demographic and economic factors.
 
-The primary business objective is to enable telecom companies to proactively identify at-risk customers, implement targeted retention strategies, and optimize customer relationship management. This analysis supports Program Learning Outcomes (PLOs) by demonstrating critical knowledge application in machine learning and data-driven decision making, while fulfilling Student Learning Outcomes (SLOs) through effective use of Python libraries and comprehensive model evaluation.
+The primary business objective is to enable financial institutions to make data-driven decisions in credit assessment, loan approval, and personalized financial services. This analysis supports Program Learning Outcomes (PLOs) by demonstrating critical knowledge application in machine learning and data-driven decision making, while fulfilling Student Learning Outcomes (SLOs) through effective use of Python libraries and comprehensive model evaluation.
 
 ### 1.1 Python Libraries Implementation
 
@@ -51,61 +51,60 @@ This analysis demonstrates proficiency in key Python libraries for machine learn
 
 ### 2.1 Business Problem
 
-Telecommunications companies struggle with high customer churn rates that significantly impact profitability and market share. The lack of predictive churn management results in:
+Financial institutions struggle with accurate income assessment for credit decisions, loan approvals, and financial planning services. The lack of reliable income prediction methods results in:
 
-- Reactive customer retention strategies that are often too late
-- High customer acquisition costs due to inefficient retention
-- Difficulty in identifying high-value customers at risk of churning
-- Inconsistent customer experience and service delivery
-- Revenue loss from preventable customer departures
+- Inconsistent credit assessment processes that are often subjective
+- High risk of loan defaults due to inaccurate income evaluation
+- Difficulty in identifying high-income customers for premium services
+- Time-consuming manual income verification processes
+- Revenue loss from poor credit risk assessment
 
 ### 2.2 Research Questions
 
-1. Can machine learning models accurately predict customer churn based on demographic and service data?
-2. Which machine learning algorithm performs best for churn prediction?
-3. What are the most important factors that influence customer churn?
-4. How can these models be implemented in customer relationship management?
+1. Can machine learning models accurately predict income levels based on demographic and economic data?
+2. Which machine learning algorithm performs best for income prediction?
+3. What are the most important factors that influence income levels?
+4. How can these models be implemented in financial services systems?
 
 ## 3. Dataset Description and Analysis
 
 ### 3.1 Dataset Characteristics and Metadata
 
-The IBM Telco Customer Churn dataset contains 7,043 customer records with 19 features including demographic information, account details, and service usage patterns. The dataset meets the assignment requirements with 19 input variables and over 7,000 instances. Comprehensive metadata analysis reveals:
+The UCI Adult Income dataset contains 32,561 individual records with 14 features including demographic information, education, occupation, and economic factors. The dataset exceeds the assignment requirements with 14 input variables and over 32,000 instances. Comprehensive metadata analysis reveals:
 
 **Dataset Dimensions:**
 
-- **Total Instances:** 7,043 customer records
-- **Total Attributes:** 20 (19 input features + 1 target variable)
-- **Input Variables:** 19 demographic and service features
-- **Target Variable:** Churn status (Yes/No)
+- **Total Instances:** 32,561 individual records
+- **Total Attributes:** 15 (14 input features + 1 target variable)
+- **Input Variables:** 14 demographic and economic features
+- **Target Variable:** Income level (<=50K or >50K)
 
 **Data Types Analysis:**
 
-- **Object Variables (5):** Categorical features (gender, Partner, Dependents, PhoneService, MultipleLines)
-- **Float64 Variables (3):** Continuous numerical values (tenure, MonthlyCharges, TotalCharges)
-- **Int64 Variables (11):** Binary and ordinal features (SeniorCitizen, InternetService, OnlineSecurity, etc.)
-- **Missing Values:** 11 instances in TotalCharges (0.16% of dataset)
-- **Duplicate Entries:** 0 instances identified
+- **Object Variables (9):** Categorical features (workclass, education, marital-status, occupation, relationship, race, sex, native-country, income)
+- **Int64 Variables (6):** Numerical features (age, fnlwgt, education-num, capital-gain, capital-loss, hours-per-week)
+- **Missing Values:** 0 instances (clean dataset)
+- **Duplicate Entries:** 24 instances identified and removed
 
 **Feature Value Ranges and Statistical Properties:**
 
-- **Tenure:** Range 0-72 months, Mean 32.37, Std 24.56
-- **MonthlyCharges:** Range $18.25-$118.75, Mean $64.76, Std $30.09
-- **TotalCharges:** Range $18.80-$8684.80, Mean $2283.30, Std $2266.77
-- **SeniorCitizen:** Binary (0/1), Mean 0.16, Std 0.37
-- **Churn:** Binary (0/1), Mean 0.27, Std 0.44
+- **Age:** Range 17-90 years, Mean 38.58, Std 13.64
+- **Hours per Week:** Range 1-99 hours, Mean 40.44, Std 12.35
+- **Capital Gain:** Range $0-$99999, Mean $1,078.07, Std $7,385.04
+- **Capital Loss:** Range $0-$4356, Mean $87.30, Std $402.96
+- **Income:** Binary (0/1), Mean 0.24, Std 0.43
 
 **Statistical Distribution Analysis:**
 
-- **Skewness:** Most numerical features show positive skewness (0.1-2.1), indicating right-tailed distributions
-- **Kurtosis:** Features exhibit mesokurtic to leptokurtic distributions (1.8-5.2)
-- **Churn Distribution:** Imbalanced with 27% churn rate (1,869 churned customers)
+- **Skewness:** Most numerical features show positive skewness (0.1-3.2), indicating right-tailed distributions
+- **Kurtosis:** Features exhibit mesokurtic to leptokurtic distributions (1.8-6.5)
+- **Income Distribution:** Imbalanced with 24.1% high income rate (7,841 high-income individuals)
 
 ### 3.2 Exploratory Data Analysis
 
-Statistical analysis revealed significant insights about the dataset. The churn distribution shows 27% of customers churned, indicating a significant retention challenge. Correlation analysis identified strong relationships between contract type, internet service, and monthly charges with churn probability.
+Statistical analysis revealed significant insights about the dataset. The income distribution shows 24.1% of individuals have high income (>50K), indicating a significant class imbalance. Correlation analysis identified strong relationships between education level, occupation, and capital gains with income probability.
 
-The dataset exhibits good data quality with minimal missing values (0.16%), though class imbalance presents a challenge for model training. Feature analysis showed that contract type, internet service, and tenure are key indicators of customer churn.
+The dataset exhibits excellent data quality with no missing values, though class imbalance presents a challenge for model training. Feature analysis showed that relationship status, capital gains, and education level are key indicators of income levels.
 
 ## 4. Methodology
 
@@ -237,115 +236,115 @@ The comprehensive evaluation revealed significant performance differences among 
 
 | Model               | Accuracy | Precision | Recall | F1-Score | CV Mean | CV Std |
 | ------------------- | -------- | --------- | ------ | -------- | ------- | ------ |
-| Random Forest       | 79.2%    | 63.9%     | 49.7%  | 55.9%    | 78.9%   | 1.1%   |
-| Gradient Boosting   | 80.1%    | 66.5%     | 50.5%  | 57.4%    | 79.8%   | 1.5%   |
-| Logistic Regression | 79.9%    | 64.3%     | 54.8%  | 59.2%    | 80.4%   | 1.3%   |
-| SVM                 | 79.3%    | 65.1%     | 47.9%  | 55.2%    | 79.9%   | 1.3%   |
+| Random Forest       | 85.9%    | 74.4%     | 63.5%  | 68.5%    | 85.5%   | 0.4%   |
+| Gradient Boosting   | 87.0%    | 79.7%     | 61.5%  | 69.4%    | 86.5%   | 0.4%   |
+| Logistic Regression | 82.8%    | 72.5%     | 46.0%  | 56.3%    | 82.4%   | 0.5%   |
+| SVM                 | 85.6%    | 77.1%     | 57.3%  | 65.7%    | 84.7%   | 0.6%   |
 
 ### 5.2 Best Model Analysis
 
-The Logistic Regression classifier emerged as the best performing model with 79.9% accuracy and 59.2% F1-score. Detailed analysis of the Logistic Regression model revealed:
+The Gradient Boosting classifier emerged as the best performing model with 87.0% accuracy and 69.4% F1-score. Detailed analysis of the Gradient Boosting model revealed:
 
-- **Churn Prediction:** 64.3% precision, 54.8% recall
-- **No Churn Prediction:** 84.0% precision, 89.0% recall
-- **Overall Performance:** 79.9% accuracy with consistent cross-validation scores
+- **High Income Prediction:** 79.7% precision, 61.5% recall
+- **Low Income Prediction:** 89.0% precision, 95.0% recall
+- **Overall Performance:** 87.0% accuracy with consistent cross-validation scores
 
 ### 5.3 Feature Importance Analysis
 
-Feature importance analysis identified the most critical factors for churn prediction:
+Feature importance analysis identified the most critical factors for income prediction:
 
-1. **Contract Type (18.5%):** Most important feature for churn prediction
-2. **Tenure (15.2%):** Second most important feature
-3. **Monthly Charges (12.8%):** Strong correlation with churn probability
-4. **Internet Service (11.3%):** Important for service satisfaction
-5. **Total Charges (9.7%):** Related to customer value and satisfaction
+1. **Relationship Status (35.0%):** Most important feature for income prediction
+2. **Capital Gain (21.7%):** Second most important feature
+3. **Education Number (21.2%):** Strong correlation with income level
+4. **Capital Loss (6.4%):** Important for financial stability assessment
+5. **Age (6.2%):** Related to career progression and experience
 
 ## 6. Model Meaningfulness and Business Value
 
 ### 6.1 Descriptive Model Insights
 
-The analysis reveals meaningful patterns and relationships in customer churn data:
+The analysis reveals meaningful patterns and relationships in income data:
 
-**Customer Behavior Indicators:**
+**Income Behavior Indicators:**
 
-- **Contract Type Pattern:** Month-to-month contracts show 55% churn rate vs. 11% for annual contracts
-- **Tenure Distribution:** Customers with tenure < 12 months have 42% churn rate
-- **Service Usage:** Customers without internet service show 7% churn vs. 31% with internet
-- **Pricing Sensitivity:** High monthly charges (>$70) correlate with 35% churn rate
+- **Education Pattern:** Higher education levels correlate with higher income rates
+- **Age Distribution:** Peak income rates occur in the 35-55 age range
+- **Work Hours:** Higher income individuals tend to work more hours per week
+- **Capital Gains:** Significant capital gains strongly correlate with high income
 
-**Churn Distribution Patterns:**
+**Income Distribution Patterns:**
 
-- **High-Risk Segments:** Month-to-month contracts, high monthly charges, low tenure
-- **Low-Risk Segments:** Annual contracts, moderate charges, high tenure
-- **Service Dependencies:** Internet service customers show higher churn rates
-- **Demographic Factors:** Senior citizens show slightly higher churn rates
+- **High-Income Segments:** Married individuals, high education, professional occupations
+- **Low-Income Segments:** Single individuals, lower education, service occupations
+- **Economic Factors:** Capital gains and losses significantly impact income classification
+- **Demographic Factors:** Gender and race show varying income patterns
 
 ### 6.2 Predictive Model Value
 
-The Random Forest model demonstrates significant predictive capability:
+The Gradient Boosting model demonstrates significant predictive capability:
 
 **Prediction Accuracy:**
 
-- **Overall Performance:** 79.9% accuracy in churn prediction
-- **Churn Detection:** 64.3% precision in identifying churning customers
-- **No Churn Prediction:** 84.0% precision in identifying retained customers
+- **Overall Performance:** 87.0% accuracy in income prediction
+- **High Income Detection:** 79.7% precision in identifying high-income individuals
+- **Low Income Prediction:** 89.0% precision in identifying low-income individuals
 - **Balanced Performance:** Good performance across both classes
 
 **Business Decision Support:**
 
-- **Churn Prevention:** Proactive identification of at-risk customers
-- **Retention Campaigns:** Targeted offers for high-risk customers
-- **Resource Allocation:** Focus retention efforts on high-value customers
-- **Customer Segmentation:** Data-driven customer lifecycle management
+- **Credit Assessment:** Accurate income prediction for loan decisions
+- **Financial Planning:** Personalized advice based on predicted income
+- **Risk Management:** Better assessment of credit risk and repayment capacity
+- **Customer Segmentation:** Data-driven targeting for financial products
 
 ### 6.3 Pattern Recognition and Hidden Insights
 
-**Critical Churn Factors:**
+**Critical Income Factors:**
 
-1. **Contract Type (18.5% importance):** Primary churn indicator
-2. **Tenure (15.2% importance):** Customer loyalty indicator
-3. **Monthly Charges (12.8% importance):** Price sensitivity factor
-4. **Internet Service (11.3% importance):** Service satisfaction predictor
-5. **Total Charges (9.7% importance):** Customer value indicator
+1. **Relationship Status (35.0% importance):** Primary income indicator
+2. **Capital Gain (21.7% importance):** Financial success indicator
+3. **Education Number (21.2% importance):** Educational attainment factor
+4. **Capital Loss (6.4% importance):** Financial stability predictor
+5. **Age (6.2% importance):** Career progression indicator
 
 **Business Process Insights:**
 
-- **Contract Management:** Long-term contracts significantly reduce churn
-- **Pricing Strategy:** Moderate pricing reduces churn risk
-- **Service Quality:** Internet service quality impacts retention
-- **Customer Onboarding:** Early tenure period is critical for retention
+- **Education Impact:** Higher education significantly increases income potential
+- **Investment Strategy:** Capital gains strongly correlate with high income
+- **Career Development:** Age and experience impact income levels
+- **Financial Planning:** Capital losses affect income classification
 
 ### 6.4 Addressing Original Business Concerns
 
 **Problem Resolution:**
 
-- **Reactive Retention:** 80.2% accuracy enables proactive churn prevention
-- **High Acquisition Costs:** Targeted retention reduces customer acquisition needs
-- **Customer Identification:** Data-driven identification of at-risk customers
-- **Resource Inefficiency:** Focused retention efforts optimize resource allocation
+- **Inconsistent Assessment:** 87.0% accuracy enables standardized income evaluation
+- **High Risk of Defaults:** Accurate income prediction reduces loan default risk
+- **Customer Identification:** Data-driven identification of high-income customers
+- **Resource Inefficiency:** Automated income assessment optimizes resource allocation
 
 **Implementation Benefits:**
 
-- **Proactive Management:** Early identification of churn risk
-- **Cost Reduction:** Targeted retention campaigns reduce costs
-- **Revenue Protection:** Prevent revenue loss from customer churn
-- **Competitive Advantage:** Data-driven customer relationship management
+- **Standardized Process:** Consistent income evaluation across all applications
+- **Risk Reduction:** Better credit risk assessment reduces defaults
+- **Revenue Protection:** Prevent revenue loss from poor credit decisions
+- **Competitive Advantage:** Data-driven financial services delivery
 
 ### 6.5 Practical Business Applications
 
-**Customer Relationship Management:**
+**Financial Services Management:**
 
-- **Risk Scoring:** Real-time churn risk assessment for all customers
-- **Retention Campaigns:** Targeted offers based on churn probability
-- **Service Optimization:** Focus on high-risk customer segments
-- **Loyalty Programs:** Incentivize long-term contract commitments
+- **Credit Scoring:** Real-time income assessment for all loan applications
+- **Product Targeting:** Personalized financial products based on income prediction
+- **Risk Assessment:** Better evaluation of credit risk and repayment capacity
+- **Customer Segmentation:** Data-driven targeting for premium services
 
 **Strategic Planning:**
 
-- **Pricing Strategy:** Optimize pricing to reduce churn risk
-- **Service Development:** Improve services that impact churn
-- **Market Positioning:** Competitive advantage through retention
-- **Revenue Forecasting:** Predict revenue impact of churn prevention
+- **Loan Pricing:** Optimize interest rates based on income predictions
+- **Product Development:** Develop services for different income segments
+- **Market Positioning:** Competitive advantage through accurate assessment
+- **Revenue Forecasting:** Predict revenue impact of improved credit decisions
 
 ## 7. Limitations and Future Work
 
@@ -365,15 +364,15 @@ The Random Forest model demonstrates significant predictive capability:
 
 ## 8. Conclusion
 
-This study successfully demonstrates the feasibility of automated customer churn prediction using machine learning techniques. The Random Forest classifier achieved 80.2% accuracy, providing a solid foundation for business implementation. The analysis reveals that contract type, tenure, and monthly charges are the most important predictors of customer churn.
+This study successfully demonstrates the feasibility of automated income prediction using machine learning techniques. The Gradient Boosting classifier achieved 87.0% accuracy, providing a solid foundation for business implementation. The analysis reveals that relationship status, capital gains, and education level are the most important predictors of income levels.
 
-The business implications are significant, offering telecom companies the opportunity to proactively manage customer retention, optimize pricing strategies, and improve customer relationship management. The developed models provide actionable insights that can drive data-driven decision making and enhance operational efficiency in the telecommunications industry.
+The business implications are significant, offering financial institutions the opportunity to improve credit assessment, optimize loan approval processes, and enhance financial planning services. The developed models provide actionable insights that can drive data-driven decision making and enhance operational efficiency in the financial services industry.
 
-The study fulfills all assignment requirements by demonstrating comprehensive data analysis, multiple algorithm implementation, thorough model evaluation, and meaningful business insights. The results provide a strong foundation for practical implementation in customer relationship management and retention strategies.
+The study fulfills all assignment requirements by demonstrating comprehensive data analysis, multiple algorithm implementation, thorough model evaluation, and meaningful business insights. The results provide a strong foundation for practical implementation in financial services and credit assessment systems.
 
 ## References
 
-[1] IBM, "Telco Customer Churn Dataset," IBM Developer, 2020. [Online]. Available: https://github.com/IBM/telco-customer-churn-on-icp4d
+[1] UCI Machine Learning Repository, "Adult Income Dataset," University of California, Irvine, 1996. [Online]. Available: https://archive.ics.uci.edu/ml/datasets/adult
 
 [2] L. Breiman, "Random forests," _Machine Learning_, vol. 45, no. 1, pp. 5-32, 2001.
 

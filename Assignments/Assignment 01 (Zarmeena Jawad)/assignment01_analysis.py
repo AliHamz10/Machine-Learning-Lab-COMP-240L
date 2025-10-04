@@ -3,8 +3,8 @@ Assignment 01: Machine Learning Analysis
 Class: BSAI F23 Red
 Student: B23F0063AI107
 
-Business Problem: Customer Churn Prediction for Telecom Industry
-Objective: Predict customer churn to help telecom companies reduce customer attrition and improve retention strategies
+Business Problem: Income Prediction for Financial Services Industry
+Objective: Predict individual income levels to help financial institutions with credit assessment, loan approval, and financial planning services
 """
 
 import pandas as pd
@@ -25,7 +25,7 @@ warnings.filterwarnings('ignore')
 plt.style.use('seaborn-v0_8')
 sns.set_palette("husl")
 
-class CustomerChurnAnalysis:
+class IncomePredictionAnalysis:
     def __init__(self):
         self.df = None
         self.X_train = None
@@ -40,22 +40,26 @@ class CustomerChurnAnalysis:
     def load_data(self):
         """Load and display basic information about the dataset"""
         print("="*60)
-        print("CUSTOMER CHURN PREDICTION ANALYSIS")
+        print("INCOME PREDICTION ANALYSIS")
         print("="*60)
         
-        # Load customer churn dataset
+        # Load UCI Adult Income dataset
         try:
-            # Try to load from URL first
-            url = "https://raw.githubusercontent.com/IBM/telco-customer-churn-on-icp4d/master/data/Telco-Customer-Churn.csv"
-            self.df = pd.read_csv(url)
-            print("✓ Dataset loaded successfully from IBM repository")
+            # Load from UCI repository
+            url = "https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data"
+            columns = ['age', 'workclass', 'fnlwgt', 'education', 'education-num', 'marital-status', 
+                      'occupation', 'relationship', 'race', 'sex', 'capital-gain', 'capital-loss', 
+                      'hours-per-week', 'native-country', 'income']
+            
+            self.df = pd.read_csv(url, names=columns, na_values=' ?', skipinitialspace=True)
+            print("✓ Dataset loaded successfully from UCI repository")
         except:
             print("❌ Could not load from URL. Please ensure internet connection.")
             return False
             
         print(f"\nDataset Shape: {self.df.shape}")
         print(f"Features: {self.df.shape[1]-1}")
-        print(f"Instances: {self.df.shape[0]}")
+        print(f"Instances: {self.df.shape[0]:,}")
         
         return True
     
@@ -85,10 +89,10 @@ class CustomerChurnAnalysis:
         duplicates = self.df.duplicated().sum()
         print(f"Duplicate rows: {duplicates}")
         
-        # Churn distribution
+        # Income distribution
         print("\n5. TARGET VARIABLE DISTRIBUTION:")
-        print(self.df['Churn'].value_counts())
-        print(f"Churn Rate: {self.df['Churn'].value_counts()['Yes'] / len(self.df) * 100:.1f}%")
+        print(self.df['income'].value_counts())
+        print(f"High Income Rate: {self.df['income'].value_counts()['>50K'] / len(self.df) * 100:.1f}%")
         
         # Create visualizations
         self.create_exploratory_plots()
@@ -96,52 +100,54 @@ class CustomerChurnAnalysis:
     def create_exploratory_plots(self):
         """Create comprehensive exploratory visualizations"""
         fig, axes = plt.subplots(3, 3, figsize=(20, 15))
-        fig.suptitle('Customer Churn Dataset - Comprehensive Exploratory Analysis', fontsize=18, fontweight='bold')
+        fig.suptitle('Adult Income Dataset - Comprehensive Exploratory Analysis', fontsize=18, fontweight='bold')
         
-        # Churn distribution
-        churn_counts = self.df['Churn'].value_counts()
+        # Income distribution
+        income_counts = self.df['income'].value_counts()
         colors = ['#ff9999', '#66b3ff']
-        axes[0,0].pie(churn_counts.values, labels=churn_counts.index, autopct='%1.1f%%', 
+        axes[0,0].pie(income_counts.values, labels=income_counts.index, autopct='%1.1f%%', 
                      startangle=90, colors=colors, explode=(0.05, 0.05))
-        axes[0,0].set_title('Customer Churn Distribution', fontsize=14, fontweight='bold')
+        axes[0,0].set_title('Income Distribution', fontsize=14, fontweight='bold')
         
-        # Tenure distribution
-        axes[0,1].hist(self.df['tenure'], bins=30, alpha=0.7, color='skyblue', edgecolor='black')
-        axes[0,1].set_title('Customer Tenure Distribution', fontsize=14, fontweight='bold')
-        axes[0,1].set_xlabel('Tenure (months)')
+        # Age distribution
+        axes[0,1].hist(self.df['age'], bins=30, alpha=0.7, color='skyblue', edgecolor='black')
+        axes[0,1].set_title('Age Distribution', fontsize=14, fontweight='bold')
+        axes[0,1].set_xlabel('Age (years)')
         axes[0,1].set_ylabel('Frequency')
         axes[0,1].grid(True, alpha=0.3)
         
-        # Monthly charges vs churn
-        sns.boxplot(data=self.df, x='Churn', y='MonthlyCharges', ax=axes[0,2], palette='Set2')
-        axes[0,2].set_title('Monthly Charges by Churn Status', fontsize=14, fontweight='bold')
-        axes[0,2].set_xlabel('Churn')
-        axes[0,2].set_ylabel('Monthly Charges ($)')
+        # Hours per week vs income
+        sns.boxplot(data=self.df, x='income', y='hours-per-week', ax=axes[0,2], palette='Set2')
+        axes[0,2].set_title('Hours per Week by Income Level', fontsize=14, fontweight='bold')
+        axes[0,2].set_xlabel('Income')
+        axes[0,2].set_ylabel('Hours per Week')
         axes[0,2].grid(True, alpha=0.3)
         
-        # Contract type vs churn
-        contract_churn = pd.crosstab(self.df['Contract'], self.df['Churn'])
-        contract_churn.plot(kind='bar', ax=axes[1,0], color=['#ff9999', '#66b3ff'])
-        axes[1,0].set_title('Churn by Contract Type', fontsize=14, fontweight='bold')
-        axes[1,0].set_xlabel('Contract Type')
+        # Education vs income
+        education_income = pd.crosstab(self.df['education'], self.df['income'])
+        education_income.plot(kind='bar', ax=axes[1,0], color=['#ff9999', '#66b3ff'])
+        axes[1,0].set_title('Income by Education Level', fontsize=14, fontweight='bold')
+        axes[1,0].set_xlabel('Education')
         axes[1,0].set_ylabel('Count')
-        axes[1,0].legend(title='Churn')
+        axes[1,0].legend(title='Income')
+        axes[1,0].tick_params(axis='x', rotation=45)
         axes[1,0].grid(True, alpha=0.3)
         
-        # Internet service vs churn
-        internet_churn = pd.crosstab(self.df['InternetService'], self.df['Churn'])
-        internet_churn.plot(kind='bar', ax=axes[1,1], color=['#ff9999', '#66b3ff'])
-        axes[1,1].set_title('Churn by Internet Service', fontsize=14, fontweight='bold')
-        axes[1,1].set_xlabel('Internet Service')
+        # Workclass vs income
+        workclass_income = pd.crosstab(self.df['workclass'], self.df['income'])
+        workclass_income.plot(kind='bar', ax=axes[1,1], color=['#ff9999', '#66b3ff'])
+        axes[1,1].set_title('Income by Work Class', fontsize=14, fontweight='bold')
+        axes[1,1].set_xlabel('Work Class')
         axes[1,1].set_ylabel('Count')
-        axes[1,1].legend(title='Churn')
+        axes[1,1].legend(title='Income')
+        axes[1,1].tick_params(axis='x', rotation=45)
         axes[1,1].grid(True, alpha=0.3)
         
-        # Total charges vs churn
-        sns.boxplot(data=self.df, x='Churn', y='TotalCharges', ax=axes[1,2], palette='Set2')
-        axes[1,2].set_title('Total Charges by Churn Status', fontsize=14, fontweight='bold')
-        axes[1,2].set_xlabel('Churn')
-        axes[1,2].set_ylabel('Total Charges ($)')
+        # Capital gain vs income
+        sns.boxplot(data=self.df, x='income', y='capital-gain', ax=axes[1,2], palette='Set2')
+        axes[1,2].set_title('Capital Gain by Income Level', fontsize=14, fontweight='bold')
+        axes[1,2].set_xlabel('Income')
+        axes[1,2].set_ylabel('Capital Gain ($)')
         axes[1,2].grid(True, alpha=0.3)
         
         # Correlation heatmap
@@ -151,27 +157,27 @@ class CustomerChurnAnalysis:
                    ax=axes[2,0], cbar_kws={'shrink': 0.8}, fmt='.2f')
         axes[2,0].set_title('Feature Correlation Matrix', fontsize=14, fontweight='bold')
         
-        # Senior citizen vs churn
-        senior_churn = pd.crosstab(self.df['SeniorCitizen'], self.df['Churn'])
-        senior_churn.plot(kind='bar', ax=axes[2,1], color=['#ff9999', '#66b3ff'])
-        axes[2,1].set_title('Churn by Senior Citizen Status', fontsize=14, fontweight='bold')
-        axes[2,1].set_xlabel('Senior Citizen (0=No, 1=Yes)')
+        # Sex vs income
+        sex_income = pd.crosstab(self.df['sex'], self.df['income'])
+        sex_income.plot(kind='bar', ax=axes[2,1], color=['#ff9999', '#66b3ff'])
+        axes[2,1].set_title('Income by Gender', fontsize=14, fontweight='bold')
+        axes[2,1].set_xlabel('Gender')
         axes[2,1].set_ylabel('Count')
-        axes[2,1].legend(title='Churn')
+        axes[2,1].legend(title='Income')
         axes[2,1].grid(True, alpha=0.3)
         
-        # Payment method vs churn
-        payment_churn = pd.crosstab(self.df['PaymentMethod'], self.df['Churn'])
-        payment_churn.plot(kind='bar', ax=axes[2,2], color=['#ff9999', '#66b3ff'])
-        axes[2,2].set_title('Churn by Payment Method', fontsize=14, fontweight='bold')
-        axes[2,2].set_xlabel('Payment Method')
+        # Marital status vs income
+        marital_income = pd.crosstab(self.df['marital-status'], self.df['income'])
+        marital_income.plot(kind='bar', ax=axes[2,2], color=['#ff9999', '#66b3ff'])
+        axes[2,2].set_title('Income by Marital Status', fontsize=14, fontweight='bold')
+        axes[2,2].set_xlabel('Marital Status')
         axes[2,2].set_ylabel('Count')
-        axes[2,2].legend(title='Churn')
+        axes[2,2].legend(title='Income')
         axes[2,2].tick_params(axis='x', rotation=45)
         axes[2,2].grid(True, alpha=0.3)
         
         plt.tight_layout()
-        plt.savefig('customer_churn_analysis.png', dpi=300, bbox_inches='tight')
+        plt.savefig('adult_income_analysis.png', dpi=300, bbox_inches='tight')
         plt.show()
         
         # Create additional detailed plots
@@ -181,39 +187,39 @@ class CustomerChurnAnalysis:
         """Create additional detailed visualizations"""
         # Statistical summary plot
         fig, axes = plt.subplots(2, 2, figsize=(15, 10))
-        fig.suptitle('Customer Churn Dataset - Statistical Analysis', fontsize=16, fontweight='bold')
+        fig.suptitle('Adult Income Dataset - Statistical Analysis', fontsize=16, fontweight='bold')
         
-        # Tenure distribution by churn
-        sns.histplot(data=self.df, x='tenure', hue='Churn', kde=True, ax=axes[0,0])
-        axes[0,0].set_title('Tenure Distribution by Churn Status')
-        axes[0,0].set_xlabel('Tenure (months)')
+        # Age distribution by income
+        sns.histplot(data=self.df, x='age', hue='income', kde=True, ax=axes[0,0])
+        axes[0,0].set_title('Age Distribution by Income Level')
+        axes[0,0].set_xlabel('Age (years)')
         axes[0,0].grid(True, alpha=0.3)
         
-        # Monthly charges distribution by churn
-        sns.histplot(data=self.df, x='MonthlyCharges', hue='Churn', kde=True, ax=axes[0,1])
-        axes[0,1].set_title('Monthly Charges Distribution by Churn Status')
-        axes[0,1].set_xlabel('Monthly Charges ($)')
+        # Hours per week distribution by income
+        sns.histplot(data=self.df, x='hours-per-week', hue='income', kde=True, ax=axes[0,1])
+        axes[0,1].set_title('Hours per Week Distribution by Income Level')
+        axes[0,1].set_xlabel('Hours per Week')
         axes[0,1].grid(True, alpha=0.3)
         
-        # Total charges distribution by churn
-        sns.histplot(data=self.df, x='TotalCharges', hue='Churn', kde=True, ax=axes[1,0])
-        axes[1,0].set_title('Total Charges Distribution by Churn Status')
-        axes[1,0].set_xlabel('Total Charges ($)')
+        # Capital gain distribution by income
+        sns.histplot(data=self.df, x='capital-gain', hue='income', kde=True, ax=axes[1,0])
+        axes[1,0].set_title('Capital Gain Distribution by Income Level')
+        axes[1,0].set_xlabel('Capital Gain ($)')
         axes[1,0].grid(True, alpha=0.3)
         
-        # Churn rate by tenure groups
-        tenure_groups = pd.cut(self.df['tenure'], bins=[0, 12, 24, 36, 60, 100], 
-                              labels=['0-12', '13-24', '25-36', '37-60', '60+'])
-        tenure_churn = self.df.groupby(tenure_groups)['Churn'].apply(lambda x: (x == 'Yes').mean() * 100)
-        tenure_churn.plot(kind='bar', ax=axes[1,1], color='coral')
-        axes[1,1].set_title('Churn Rate by Tenure Groups')
-        axes[1,1].set_xlabel('Tenure Group (months)')
-        axes[1,1].set_ylabel('Churn Rate (%)')
+        # Income rate by age groups
+        age_groups = pd.cut(self.df['age'], bins=[0, 25, 35, 45, 55, 100], 
+                           labels=['18-25', '26-35', '36-45', '46-55', '55+'])
+        age_income = self.df.groupby(age_groups)['income'].apply(lambda x: (x == '>50K').mean() * 100)
+        age_income.plot(kind='bar', ax=axes[1,1], color='coral')
+        axes[1,1].set_title('High Income Rate by Age Groups')
+        axes[1,1].set_xlabel('Age Group (years)')
+        axes[1,1].set_ylabel('High Income Rate (%)')
         axes[1,1].tick_params(axis='x', rotation=45)
         axes[1,1].grid(True, alpha=0.3)
         
         plt.tight_layout()
-        plt.savefig('customer_churn_detailed_analysis.png', dpi=300, bbox_inches='tight')
+        plt.savefig('adult_income_detailed_analysis.png', dpi=300, bbox_inches='tight')
         plt.show()
         
     def preprocess_data(self):
@@ -222,17 +228,15 @@ class CustomerChurnAnalysis:
         print("DATA PREPROCESSING")
         print("="*60)
         
-        # Remove customer ID (not useful for prediction)
-        if 'customerID' in self.df.columns:
-            self.df = self.df.drop('customerID', axis=1)
+        # Handle missing values (replace ' ?' with NaN and drop)
+        self.df = self.df.replace(' ?', np.nan)
+        self.df = self.df.dropna()
         
-        # Handle missing values in TotalCharges
-        self.df['TotalCharges'] = pd.to_numeric(self.df['TotalCharges'], errors='coerce')
-        self.df['TotalCharges'] = self.df['TotalCharges'].fillna(self.df['TotalCharges'].median())
+        print(f"Dataset after removing missing values: {self.df.shape}")
         
         # Encode categorical variables
         categorical_columns = self.df.select_dtypes(include=['object']).columns
-        categorical_columns = categorical_columns.drop('Churn')  # Don't encode target yet
+        categorical_columns = categorical_columns.drop('income')  # Don't encode target yet
         
         for col in categorical_columns:
             le = LabelEncoder()
@@ -241,17 +245,17 @@ class CustomerChurnAnalysis:
         
         # Encode target variable
         le_target = LabelEncoder()
-        self.df['Churn'] = le_target.fit_transform(self.df['Churn'])
-        self.label_encoders['Churn'] = le_target
+        self.df['income'] = le_target.fit_transform(self.df['income'])
+        self.label_encoders['income'] = le_target
         
         print("Categorical variables encoded:")
         for col in categorical_columns:
             print(f"  {col}: {len(self.label_encoders[col].classes_)} categories")
         
         # Feature selection
-        feature_cols = [col for col in self.df.columns if col != 'Churn']
+        feature_cols = [col for col in self.df.columns if col != 'income']
         X = self.df[feature_cols]
-        y = self.df['Churn']
+        y = self.df['income']
         
         # Split the data
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
@@ -268,8 +272,8 @@ class CustomerChurnAnalysis:
         
         # Check class distribution
         print(f"\nClass distribution in training set:")
-        print(f"  No Churn: {(self.y_train == 0).sum()} ({(self.y_train == 0).mean()*100:.1f}%)")
-        print(f"  Churn: {(self.y_train == 1).sum()} ({(self.y_train == 1).mean()*100:.1f}%)")
+        print(f"  Low Income (<=50K): {(self.y_train == 0).sum()} ({(self.y_train == 0).mean()*100:.1f}%)")
+        print(f"  High Income (>50K): {(self.y_train == 1).sum()} ({(self.y_train == 1).mean()*100:.1f}%)")
         
     def train_models(self):
         """Train multiple machine learning models"""
@@ -479,29 +483,29 @@ class CustomerChurnAnalysis:
         print(f"   • Accuracy: {best_accuracy:.1%}")
         print(f"   • Precision: {best_precision:.1%}")
         print(f"   • Recall: {best_recall:.1%}")
-        print(f"   • This model can correctly predict customer churn {best_accuracy:.1%} of the time")
+        print(f"   • This model can correctly predict income levels {best_accuracy:.1%} of the time")
         
         print(f"\n2. BUSINESS APPLICATIONS:")
-        print(f"   • Churn Prevention: Identify at-risk customers before they leave")
-        print(f"   • Retention Campaigns: Target high-risk customers with retention offers")
-        print(f"   • Customer Segmentation: Segment customers based on churn risk")
-        print(f"   • Resource Allocation: Focus retention efforts on high-value at-risk customers")
+        print(f"   • Credit Assessment: Evaluate loan applications based on predicted income")
+        print(f"   • Financial Planning: Provide personalized financial advice")
+        print(f"   • Insurance Underwriting: Assess risk based on income predictions")
+        print(f"   • Marketing Segmentation: Target high-income customers for premium services")
         
         print(f"\n3. KEY FINDINGS:")
-        print(f"   • Model achieves {best_accuracy:.1%} accuracy in churn prediction")
-        print(f"   • This enables proactive customer retention strategies")
-        print(f"   • Churn prediction can reduce customer acquisition costs")
-        print(f"   • Enables data-driven customer relationship management")
+        print(f"   • Model achieves {best_accuracy:.1%} accuracy in income prediction")
+        print(f"   • This enables data-driven financial decision making")
+        print(f"   • Income prediction can improve credit risk assessment")
+        print(f"   • Enables personalized financial services and products")
         
         print(f"\n4. IMPLEMENTATION RECOMMENDATIONS:")
-        print(f"   • Deploy {best_model_name} model in customer management system")
-        print(f"   • Integrate with CRM for real-time churn alerts")
-        print(f"   • Train customer service teams on churn risk indicators")
+        print(f"   • Deploy {best_model_name} model in financial services systems")
+        print(f"   • Integrate with loan approval and credit assessment processes")
+        print(f"   • Train financial advisors on income prediction insights")
         print(f"   • Monitor model performance and retrain quarterly")
         
     def run_complete_analysis(self):
         """Run the complete analysis pipeline"""
-        print("Starting Customer Churn Prediction Analysis...")
+        print("Starting Income Prediction Analysis...")
         
         # Load data
         if not self.load_data():
@@ -529,8 +533,8 @@ class CustomerChurnAnalysis:
         print("ANALYSIS COMPLETE!")
         print("="*60)
         print("Files generated:")
-        print("• customer_churn_analysis.png - Exploratory analysis plots")
-        print("• customer_churn_detailed_analysis.png - Detailed statistical analysis")
+        print("• adult_income_analysis.png - Exploratory analysis plots")
+        print("• adult_income_detailed_analysis.png - Detailed statistical analysis")
         print("• feature_importance_*.png - Feature importance plots")
         print("• model_evaluation_*.png - Model evaluation plots")
         print("• model_results.csv - Detailed model performance results")
@@ -563,8 +567,8 @@ class CustomerChurnAnalysis:
             f.write(f"Total Instances: {len(self.df)}\n")
             f.write(f"Total Features: {len(self.df.columns)-1}\n")
             # Calculate churn rate from original data before encoding
-            original_churn_rate = (self.df['Churn'] == 1).sum() / len(self.df) * 100
-            f.write(f"Churn Rate: {original_churn_rate:.1f}%\n\n")
+            original_high_income_rate = (self.df['income'] == 1).sum() / len(self.df) * 100
+            f.write(f"High Income Rate: {original_high_income_rate:.1f}%\n\n")
             
             f.write("MODEL PERFORMANCE COMPARISON:\n")
             f.write(results_df.to_string(index=False))
@@ -579,12 +583,12 @@ class CustomerChurnAnalysis:
             f.write(f"Recall: {self.results[best_model_name]['recall']:.4f}\n\n")
             
             f.write("BUSINESS IMPLICATIONS:\n")
-            f.write("• Proactive customer churn prediction enables targeted retention strategies\n")
-            f.write("• High accuracy model supports data-driven decision making\n")
-            f.write("• Feature importance analysis identifies key churn indicators\n")
-            f.write("• Model can be integrated into customer relationship management systems\n")
+            f.write("• Income prediction enables data-driven financial decision making\n")
+            f.write("• High accuracy model supports credit assessment and loan approval\n")
+            f.write("• Feature importance analysis identifies key income indicators\n")
+            f.write("• Model can be integrated into financial services systems\n")
 
 if __name__ == "__main__":
     # Run the complete analysis
-    analysis = CustomerChurnAnalysis()
+    analysis = IncomePredictionAnalysis()
     analysis.run_complete_analysis()
