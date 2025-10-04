@@ -24,18 +24,21 @@ By the end of this lab, students will be able to:
 ## 📋 Lab Content
 
 ### 1. Machine Learning Fundamentals
+
 - **Supervised Learning:** Classification and Regression
 - **Unsupervised Learning:** Clustering and Dimensionality Reduction
 - **Model Training and Evaluation:** Train-test split, cross-validation
 - **Overfitting and Underfitting:** Model complexity and generalization
 
 ### 2. Python Libraries Introduction
+
 - **NumPy:** Numerical computing and array operations
 - **Pandas:** Data manipulation and analysis
 - **Matplotlib:** Data visualization and plotting
 - **Scikit-learn:** Machine learning algorithms and tools
 
 ### 3. Hands-on Exercises
+
 - Data loading and exploration
 - Basic statistical analysis
 - Data visualization techniques
@@ -63,6 +66,7 @@ Lab 01/
 ## 🚀 Getting Started
 
 ### 1. Environment Setup
+
 ```bash
 # Create virtual environment
 python -m venv lab01_env
@@ -78,6 +82,7 @@ pip install numpy pandas matplotlib scikit-learn jupyter
 ```
 
 ### 2. Running the Lab
+
 ```bash
 # Start Jupyter Notebook
 jupyter notebook
@@ -90,24 +95,28 @@ jupyter notebook
 ## 📊 Lab Exercises
 
 ### Exercise 1: NumPy Basics
+
 - Array creation and manipulation
 - Mathematical operations
 - Statistical functions
 - Array indexing and slicing
 
 ### Exercise 2: Pandas DataFrames
+
 - Data loading from CSV files
 - Data exploration and summary statistics
 - Data cleaning and preprocessing
 - Data filtering and selection
 
 ### Exercise 3: Data Visualization
+
 - Line plots and scatter plots
 - Histograms and bar charts
 - Box plots and violin plots
 - Customizing plots and styling
 
 ### Exercise 4: Scikit-learn Introduction
+
 - Loading built-in datasets
 - Train-test split
 - Simple classification with Logistic Regression
@@ -116,6 +125,7 @@ jupyter notebook
 ## 🎓 Key Concepts Covered
 
 ### Machine Learning Pipeline
+
 1. **Data Collection:** Gathering relevant data
 2. **Data Preprocessing:** Cleaning and preparing data
 3. **Feature Engineering:** Creating meaningful features
@@ -125,6 +135,7 @@ jupyter notebook
 7. **Model Deployment:** Using models for predictions
 
 ### Python Libraries Usage
+
 - **NumPy:** `np.array()`, `np.mean()`, `np.std()`, `np.random`
 - **Pandas:** `pd.read_csv()`, `df.head()`, `df.describe()`, `df.groupby()`
 - **Matplotlib:** `plt.plot()`, `plt.hist()`, `plt.scatter()`, `plt.show()`
@@ -144,12 +155,14 @@ After completing this lab, students should be able to:
 ## 🔧 Troubleshooting
 
 ### Common Issues
+
 1. **Import Errors:** Ensure all required packages are installed
 2. **Data Loading Issues:** Check file paths and data formats
 3. **Visualization Problems:** Verify matplotlib backend settings
 4. **Memory Issues:** Use smaller datasets for initial testing
 
 ### Solutions
+
 ```python
 # Check package versions
 import numpy as np
@@ -166,12 +179,14 @@ print(f"Scikit-learn: {sklearn.__version__}")
 ## 📚 Additional Resources
 
 ### Documentation
+
 - [NumPy Documentation](https://numpy.org/doc/)
 - [Pandas Documentation](https://pandas.pydata.org/docs/)
 - [Matplotlib Documentation](https://matplotlib.org/stable/)
 - [Scikit-learn Documentation](https://scikit-learn.org/stable/)
 
 ### Tutorials
+
 - [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
 - [Scikit-learn User Guide](https://scikit-learn.org/stable/user_guide.html)
 - [Matplotlib Tutorials](https://matplotlib.org/stable/tutorials/index.html)
@@ -188,6 +203,7 @@ print(f"Scikit-learn: {sklearn.__version__}")
 ## 📝 Lab Report
 
 Students should document their findings in the Jupyter notebook, including:
+
 - Code implementations
 - Data visualizations
 - Model results
@@ -197,6 +213,7 @@ Students should document their findings in the Jupyter notebook, including:
 ## 🎯 Next Steps
 
 After completing Lab 01, students will be ready for:
+
 - Lab 02: Linear Regression Analysis
 - Lab 03: Advanced Linear Regression & Gradient Descent
 - Lab 04: Deep Learning & Computer Vision
