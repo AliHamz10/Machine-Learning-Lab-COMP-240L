@@ -390,4 +390,4 @@ The study fulfills all assignment requirements by demonstrating comprehensive da
 
 ---
 
-**Word Count:** 1,847 words (excluding references and formatting)
+**Word Count:** 1,847  (excluding references and formatting)
