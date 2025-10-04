@@ -111,22 +111,26 @@ The analysis demonstrates that machine learning models can effectively predict w
 
 ```
 Assignment 01 (Ali Hamza)/
-├── assignment01_analysis.py                    # Main analysis script (591 lines)
-├── Assignment01_Report.md                      # Comprehensive report (394 lines)
+├── Scripts/                                    # Analysis scripts
+│   └── assignment01_analysis.py               # Main analysis script (591 lines)
+├── Data/                                       # Dataset files
+│   └── processed_adult_income.csv             # Processed dataset
+├── Results/                                    # Analysis results and visualizations
+│   ├── wine_quality_analysis.png              # 9-panel exploratory analysis
+│   ├── confusion_matrix.png                   # Model confusion matrix
+│   ├── feature_importance_random_forest.png   # Feature importance plot
+│   ├── model_comparison.png                   # Model performance comparison
+│   ├── model_results.csv                      # Detailed performance metrics
+│   └── detailed_results.txt                   # Analysis summary
+├── Documentation/                              # Reports and documentation
+│   ├── Assignment01_Report.md                 # Comprehensive report (394 lines)
+│   └── COMP 240 Machine Learning Assignment 01.pdf # PDF report
+├── Environment/                                # Virtual environment
+│   ├── bin/                                    # Python executables
+│   ├── lib/                                    # Installed packages
+│   └── pyvenv.cfg                              # Environment config
 ├── requirements.txt                            # Python dependencies
-├── README.md                                   # This documentation
-├── wine_quality_analysis.png                   # 9-panel exploratory analysis
-├── confusion_matrix.png                        # Model confusion matrix
-├── feature_importance_random_forest.png        # Feature importance plot
-├── model_comparison.png                        # Model performance comparison
-├── model_results.csv                           # Detailed performance metrics
-├── detailed_results.txt                        # Analysis summary
-├── processed_adult_income.csv                  # Processed dataset
-├── COMP 240 Machine Learning Assignment 01.pdf # PDF report
-└── assignment01_env/                           # Virtual environment
-    ├── bin/                                    # Python executables
-    ├── lib/                                    # Installed packages
-    └── pyvenv.cfg                              # Environment config
+└── README.md                                   # This documentation
 ```
 
 ## Usage
@@ -140,7 +144,7 @@ Assignment 01 (Ali Hamza)/
 2. **Run Analysis:**
 
    ```bash
-   python assignment01_analysis.py
+   python Scripts/assignment01_analysis.py
    ```
 
 3. **View Results:**

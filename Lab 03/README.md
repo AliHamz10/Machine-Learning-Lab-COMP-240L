@@ -162,13 +162,18 @@ Lab 03/
 ├── Lab Tasks/                                    # Main lab assignment
 │   ├── Lab_03_Insurance_Dataset_Analysis.ipynb
 │   └── Insurance.csv
-├── diabetes.csv                                  # Diabetes dataset
-├── insurance[1].csv                             # Additional insurance data
-├── yahoo_data[1].xlsx                           # Financial data
-├── Lab 03 - Linear Regression, Cost Function and Gradient Descent.pdf
-├── Python Libraries.pdf                         # Library documentation
+├── Data/                                         # Dataset files
+│   ├── diabetes.csv
+│   ├── diabetes[1].csv
+│   ├── insurance[1].csv
+│   └── yahoo_data[1].xlsx
+├── Documentation/                                # Lab manuals and references
+│   ├── Lab 03 - Linear Regression, Cost Function and Gradient Descent.pdf
+│   └── Python Libraries.pdf
+├── Scripts/                                      # Analysis scripts
+│   └── run_lab03_analysis.py
+├── Results/                                      # Analysis results
 ├── requirements.txt                             # Python dependencies
-├── run_lab03_analysis.py                        # Analysis script
 └── README.md                                    # This documentation
 ```
 

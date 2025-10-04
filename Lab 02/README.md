@@ -22,15 +22,19 @@ This lab implements a comprehensive linear regression analysis on an insurance d
 
 ```
 Lab 02/
-├── Lab_02_Linear_Regression_Analysis.ipynb    # Comprehensive Jupyter notebook
-├── run_lab02_analysis.py                      # Python script for execution
-├── requirements.txt                            # Python dependencies
-├── insurance.csv                               # Insurance dataset
-├── lab02_comprehensive_analysis.png            # Analysis visualization
-├── lab02_env/                                  # Virtual environment
+├── Notebooks/                                  # Jupyter notebooks
+│   └── Lab_02_Linear_Regression_Analysis.ipynb
+├── Data/                                       # Dataset files
+│   └── insurance.csv
+├── Results/                                    # Analysis results
+│   └── lab02_comprehensive_analysis.png
+├── Scripts/                                    # Python scripts
+│   └── run_lab02_analysis.py
+├── Environment/                                # Virtual environment
 │   ├── bin/                                    # Python executables
 │   ├── lib/                                    # Installed packages
 │   └── pyvenv.cfg                              # Environment config
+├── requirements.txt                            # Python dependencies
 └── README.md                                   # This documentation
 ```
 
@@ -40,14 +44,14 @@ Lab 02/
 
 ```bash
 cd "Lab 02"
-python run_lab02_analysis.py
+python Scripts/run_lab02_analysis.py
 ```
 
 ### Option 2: Use Jupyter Notebook
 
 ```bash
 cd "Lab 02"
-jupyter notebook Lab_02_Linear_Regression_Analysis.ipynb
+jupyter notebook Notebooks/Lab_02_Linear_Regression_Analysis.ipynb
 ```
 
 ### Install Dependencies

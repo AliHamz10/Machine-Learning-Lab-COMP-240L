@@ -46,8 +46,11 @@ By the end of this lab, students will be able to:
 
 ```
 Lab 01/
-├── Lab 01.ipynb                    # Original lab notebook
-├── Lab 01_executed.ipynb          # Executed lab notebook with results
+├── Notebooks/                      # Jupyter notebooks
+│   ├── Lab 01.ipynb               # Original lab notebook
+│   └── Lab 01_executed.ipynb      # Executed lab notebook with results
+├── Data/                          # Dataset files (if any)
+├── Results/                       # Analysis results and outputs
 └── README.md                      # This documentation
 ```
 
@@ -79,6 +82,7 @@ pip install numpy pandas matplotlib scikit-learn jupyter
 # Start Jupyter Notebook
 jupyter notebook
 
+# Navigate to Notebooks folder
 # Open Lab 01.ipynb
 # Execute cells sequentially
 ```

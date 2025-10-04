@@ -75,20 +75,27 @@ data/
 
 ```
 Lab 04/CatTigerClassifier/
-├── CatTigerClassifier.ipynb                    # Original implementation
-├── CatTigerClassifier_Improved.ipynb          # Enhanced version
-├── cat_tiger_mobilenetv2.h5                   # Trained model weights
-├── data/                                       # Dataset directory
+├── Notebooks/                                  # Jupyter notebooks
+│   ├── CatTigerClassifier.ipynb               # Original implementation
+│   └── CatTigerClassifier_Improved.ipynb      # Enhanced version
+├── Models/                                     # Trained models
+│   └── cat_tiger_mobilenetv2.h5               # Trained model weights
+├── Data/                                       # Dataset directory
 │   ├── cat/                                    # Cat images
 │   ├── tiger/                                  # Tiger images
 │   ├── validation/                             # Validation set
-│   └── README.md                               # Data documentation
-├── temp_data/                                  # Temporary data processing
-├── data_collection.py                          # Data collection script
-├── download_dataset.py                         # Dataset download script
-├── oxford_pets.tar.gz                          # Original dataset archive
+│   ├── README.md                               # Data documentation
+│   └── oxford_pets.tar.gz                     # Original dataset archive
+├── Scripts/                                    # Data processing scripts
+│   ├── data_collection.py                     # Data collection script
+│   └── download_dataset.py                    # Dataset download script
+├── Results/                                    # Analysis results
+│   └── temp_data/                              # Temporary data processing
+├── Environment/                                # Virtual environment
+│   ├── bin/                                    # Python executables
+│   ├── lib/                                    # Installed packages
+│   └── pyvenv.cfg                              # Environment config
 ├── requirements.txt                            # Python dependencies
-├── venv/                                       # Virtual environment
 └── README.md                                   # This documentation
 ```
 
@@ -187,19 +194,19 @@ pip install -r requirements.txt
 ### 2. Data Preparation
 ```bash
 # Download dataset (if needed)
-python download_dataset.py
+python Scripts/download_dataset.py
 
 # Organize data
-python data_collection.py
+python Scripts/data_collection.py
 ```
 
 ### 3. Model Training
 ```bash
 # Run Jupyter notebook
-jupyter notebook CatTigerClassifier.ipynb
+jupyter notebook Notebooks/CatTigerClassifier.ipynb
 
 # Or run improved version
-jupyter notebook CatTigerClassifier_Improved.ipynb
+jupyter notebook Notebooks/CatTigerClassifier_Improved.ipynb
 ```
 
 ## 📊 Key Features

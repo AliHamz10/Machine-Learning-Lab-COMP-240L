@@ -112,20 +112,24 @@ The analysis demonstrates that machine learning models can effectively predict i
 
 ```
 Assignment 01 (Zarmeena Jawad)/
-├── assignment01_analysis.py                           # Main analysis script (595 lines)
-├── Assignment01_Report.md                             # Comprehensive report (394 lines)
+├── Scripts/                                           # Analysis scripts
+│   └── assignment01_analysis.py                      # Main analysis script (595 lines)
+├── Data/                                              # Dataset files (if any)
+├── Results/                                           # Analysis results and visualizations
+│   ├── adult_income_analysis.png                     # 9-panel exploratory analysis
+│   ├── adult_income_detailed_analysis.png            # Statistical analysis plots
+│   ├── feature_importance_gradient_boosting.png      # Feature importance plot
+│   ├── model_evaluation_gradient_boosting.png        # Model evaluation plots
+│   ├── model_results.csv                             # Detailed performance metrics
+│   └── detailed_results.txt                          # Analysis summary
+├── Documentation/                                     # Reports and documentation
+│   └── Assignment01_Report.md                        # Comprehensive report (394 lines)
+├── Environment/                                       # Virtual environment
+│   ├── bin/                                           # Python executables
+│   ├── lib/                                           # Installed packages
+│   └── pyvenv.cfg                                     # Environment config
 ├── requirements.txt                                   # Python dependencies
-├── README.md                                          # This documentation
-├── adult_income_analysis.png                          # 9-panel exploratory analysis
-├── adult_income_detailed_analysis.png                 # Statistical analysis plots
-├── feature_importance_gradient_boosting.png           # Feature importance plot
-├── model_evaluation_gradient_boosting.png             # Model evaluation plots
-├── model_results.csv                                  # Detailed performance metrics
-├── detailed_results.txt                               # Analysis summary
-└── assignment01_env/                                  # Virtual environment
-    ├── bin/                                           # Python executables
-    ├── lib/                                           # Installed packages
-    └── pyvenv.cfg                                     # Environment config
+└── README.md                                          # This documentation
 ```
 
 ## Usage
@@ -139,7 +143,7 @@ Assignment 01 (Zarmeena Jawad)/
 2. **Run Analysis:**
 
    ```bash
-   python assignment01_analysis.py
+   python Scripts/assignment01_analysis.py
    ```
 
 3. **View Results:**
