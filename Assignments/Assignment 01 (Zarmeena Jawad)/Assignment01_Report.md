@@ -237,18 +237,18 @@ The comprehensive evaluation revealed significant performance differences among 
 
 | Model               | Accuracy | Precision | Recall | F1-Score | CV Mean | CV Std |
 | ------------------- | -------- | --------- | ------ | -------- | ------- | ------ |
-| Random Forest       | 80.2%    | 78.5%     | 80.2%  | 79.3%    | 79.8%   | 1.2%   |
-| Gradient Boosting   | 78.9%    | 76.8%     | 78.9%  | 77.8%    | 78.1%   | 1.5%   |
-| Logistic Regression | 75.4%    | 73.2%     | 75.4%  | 74.3%    | 75.0%   | 1.8%   |
-| SVM                 | 77.1%    | 74.9%     | 77.1%  | 76.0%    | 76.5%   | 1.3%   |
+| Random Forest       | 79.2%    | 63.9%     | 49.7%  | 55.9%    | 78.9%   | 1.1%   |
+| Gradient Boosting   | 80.1%    | 66.5%     | 50.5%  | 57.4%    | 79.8%   | 1.5%   |
+| Logistic Regression | 79.9%    | 64.3%     | 54.8%  | 59.2%    | 80.4%   | 1.3%   |
+| SVM                 | 79.3%    | 65.1%     | 47.9%  | 55.2%    | 79.9%   | 1.3%   |
 
 ### 5.2 Best Model Analysis
 
-The Random Forest classifier emerged as the best performing model with 80.2% accuracy and 79.3% F1-score. Detailed analysis of the Random Forest model revealed:
+The Logistic Regression classifier emerged as the best performing model with 79.9% accuracy and 59.2% F1-score. Detailed analysis of the Logistic Regression model revealed:
 
-- **Churn Prediction:** 78.5% precision, 80.2% recall
-- **No Churn Prediction:** 81.1% precision, 79.8% recall
-- **Overall Performance:** 80.2% accuracy with consistent cross-validation scores
+- **Churn Prediction:** 64.3% precision, 54.8% recall
+- **No Churn Prediction:** 84.0% precision, 89.0% recall
+- **Overall Performance:** 79.9% accuracy with consistent cross-validation scores
 
 ### 5.3 Feature Importance Analysis
 
@@ -286,9 +286,9 @@ The Random Forest model demonstrates significant predictive capability:
 
 **Prediction Accuracy:**
 
-- **Overall Performance:** 80.2% accuracy in churn prediction
-- **Churn Detection:** 78.5% precision in identifying churning customers
-- **No Churn Prediction:** 81.1% precision in identifying retained customers
+- **Overall Performance:** 79.9% accuracy in churn prediction
+- **Churn Detection:** 64.3% precision in identifying churning customers
+- **No Churn Prediction:** 84.0% precision in identifying retained customers
 - **Balanced Performance:** Good performance across both classes
 
 **Business Decision Support:**

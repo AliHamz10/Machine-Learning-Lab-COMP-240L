@@ -1,0 +1,26 @@
+CUSTOMER CHURN PREDICTION ANALYSIS - DETAILED RESULTS
+============================================================
+
+DATASET INFORMATION:
+Total Instances: 7043
+Total Features: 19
+Churn Rate: 26.5%
+
+MODEL PERFORMANCE COMPARISON:
+              Model  Accuracy  Precision   Recall  F1_Score  CV_Mean   CV_Std
+      Random Forest  0.792051   0.639175 0.497326  0.559398 0.788781 0.010787
+  Gradient Boosting  0.801278   0.665493 0.505348  0.574468 0.798365 0.014619
+Logistic Regression  0.799148   0.642633 0.548128  0.591631 0.804043 0.013398
+                SVM  0.793471   0.650909 0.478610  0.551618 0.798721 0.012588
+
+BEST MODEL: Logistic Regression
+Accuracy: 0.7991
+F1-Score: 0.5916
+Precision: 0.6426
+Recall: 0.5481
+
+BUSINESS IMPLICATIONS:
+• Proactive customer churn prediction enables targeted retention strategies
+• High accuracy model supports data-driven decision making
+• Feature importance analysis identifies key churn indicators
+• Model can be integrated into customer relationship management systems
