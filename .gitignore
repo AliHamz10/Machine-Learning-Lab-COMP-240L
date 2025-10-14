@@ -77,3 +77,7 @@ temp/
 Lab 03/*\[1\].csv
 Lab 03/*\[1\].xlsx
 Lab 03/*.pdf
+
+# Lab 06 environment and Jupyter artifacts
+Lab 06/lab06_env/
+**/.ipynb_checkpoints/
