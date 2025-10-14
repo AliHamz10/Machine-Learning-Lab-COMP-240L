@@ -1,0 +1,36 @@
+LAB 06: MACHINE LEARNING EVALUATION ON PULSAR STARS DATASET
+============================================================
+
+DATASET OVERVIEW:
+Total Samples: 17,898
+Features: 8
+Class Distribution: {0: 16259, 1: 1639}
+Class Balance: 0.092
+
+MODEL PERFORMANCE:
+Test Accuracy: 0.9794
+Test Precision: 0.9441
+Test Recall: 0.8244
+Test F1-Score: 0.8802
+Test ROC-AUC: 0.9740
+
+CROSS-VALIDATION RESULTS:
+Accuracy: 0.9783 ± 0.0015
+Precision: 0.9384 ± 0.0085
+Recall: 0.8169 ± 0.0158
+F1: 0.8733 ± 0.0095
+Roc_auc: 0.9758 ± 0.0072
+
+STATISTICAL ANALYSIS:
+Significant Features: 8/8
+Significance Rate: 100.0%
+
+CLASSIFICATION REPORT:
+              precision    recall  f1-score   support
+
+           0     0.9825    0.9951    0.9888      4065
+           1     0.9441    0.8244    0.8802       410
+
+    accuracy                         0.9794      4475
+   macro avg     0.9633    0.9097    0.9345      4475
+weighted avg     0.9790    0.9794    0.9788      4475

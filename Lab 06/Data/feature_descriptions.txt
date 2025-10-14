@@ -1,0 +1,91 @@
+# HTRU2 Pulsar Stars Dataset - Feature Descriptions
+
+## Dataset Overview
+- **Source**: HTRU2 (High Time Resolution Universe Survey) - Second Data Release
+- **Total Samples**: 17,898 pulsar candidates
+- **Features**: 8 statistical measures
+- **Target**: Binary classification (0 = Non-Pulsar, 1 = Pulsar)
+- **Class Distribution**: 9.2% Pulsars, 90.8% Non-Pulsars
+
+## Feature Descriptions
+
+### 1. Mean of the integrated profile
+- **Description**: The mean of the integrated profile (folded pulse profile)
+- **Type**: Continuous
+- **Range**: Typically 0.0 to 1.0 (normalized)
+- **Significance**: Higher values indicate stronger pulsar signals
+
+### 2. Standard deviation of the integrated profile
+- **Description**: The standard deviation of the integrated profile
+- **Type**: Continuous
+- **Range**: Typically 0.0 to 1.0 (normalized)
+- **Significance**: Measures the variability in the pulse profile
+
+### 3. Excess kurtosis of the integrated profile
+- **Description**: The excess kurtosis of the integrated profile
+- **Type**: Continuous
+- **Range**: Can be negative or positive
+- **Significance**: Measures the "peakedness" of the pulse profile distribution
+
+### 4. Skewness of the integrated profile
+- **Description**: The skewness of the integrated profile
+- **Type**: Continuous
+- **Range**: Can be negative or positive
+- **Significance**: Measures the asymmetry of the pulse profile distribution
+
+### 5. Mean of the DM-SNR curve
+- **Description**: The mean of the DM-SNR (Dispersion Measure - Signal to Noise Ratio) curve
+- **Type**: Continuous
+- **Range**: Typically 0.0 to 1.0 (normalized)
+- **Significance**: Higher values indicate better signal quality across dispersion measures
+
+### 6. Standard deviation of the DM-SNR curve
+- **Description**: The standard deviation of the DM-SNR curve
+- **Type**: Continuous
+- **Range**: Typically 0.0 to 1.0 (normalized)
+- **Significance**: Measures the variability in signal quality across dispersion measures
+
+### 7. Excess kurtosis of the DM-SNR curve
+- **Description**: The excess kurtosis of the DM-SNR curve
+- **Type**: Continuous
+- **Range**: Can be negative or positive
+- **Significance**: Measures the "peakedness" of the DM-SNR distribution
+
+### 8. Skewness of the DM-SNR curve
+- **Description**: The skewness of the DM-SNR curve
+- **Type**: Continuous
+- **Range**: Can be negative or positive
+- **Significance**: Measures the asymmetry of the DM-SNR distribution
+
+## Target Variable
+
+### target_class
+- **Description**: Binary classification label
+- **Values**: 0 = Non-Pulsar, 1 = Pulsar
+- **Distribution**: Highly imbalanced (9.2% positive class)
+- **Significance**: The main prediction target for the classification task
+
+## Data Characteristics
+
+### Class Imbalance
+- **Non-Pulsars**: 16,259 samples (90.8%)
+- **Pulsars**: 1,639 samples (9.2%)
+- **Imbalance Ratio**: ~9:1
+
+### Data Quality
+- **Missing Values**: None (clean dataset)
+- **Outliers**: Present in some features
+- **Normalization**: Features are already normalized/scaled
+
+## Usage Notes
+
+1. **Class Imbalance**: Consider using stratified sampling and appropriate evaluation metrics
+2. **Feature Scaling**: Features appear to be pre-normalized
+3. **Statistical Significance**: Most features show significant differences between classes
+4. **Model Selection**: Logistic regression works well due to linear separability
+5. **Evaluation**: Use precision, recall, F1-score, and ROC-AUC for comprehensive evaluation
+
+## References
+
+- Lyon, R. J., et al. "HTRU2: A new survey for pulsars and transients." Monthly Notices of the Royal Astronomical Society 459.1 (2016): 1204-1216.
+- Dataset available at: https://www.kaggle.com/datasets/pavanraj159/predicting-a-pulsar-star
