@@ -540,12 +540,21 @@ class HeartDiseaseMLFramework:
         for name in ["Random Forest", "SVM"]:
             model = self.models[name]
             if name == "SVM":
+                X_train_use = self.X_train_scaled
                 X_test_use = self.X_test_scaled
             else:
+                X_train_use = self.X_train.values
                 X_test_use = self.X_test.values
 
             y_pred = model.predict(X_test_use)
             y_pred_proba = model.predict_proba(X_test_use)[:, 1]
+
+            # Calculate cross-validation scores for tuned models
+            cv_scores = cross_val_score(
+                model, X_train_use, self.y_train, cv=5, scoring="accuracy"
+            )
+            cv_mean = cv_scores.mean()
+            cv_std = cv_scores.std()
 
             self.results[name] = {
                 "accuracy": accuracy_score(self.y_test, y_pred),
@@ -559,6 +568,8 @@ class HeartDiseaseMLFramework:
                     self.y_test, y_pred, average="weighted", zero_division=0
                 ),
                 "auc_roc": roc_auc_score(self.y_test, y_pred_proba),
+                "cv_mean": cv_mean,
+                "cv_std": cv_std,
                 "y_pred": y_pred,
                 "y_pred_proba": y_pred_proba,
             }
