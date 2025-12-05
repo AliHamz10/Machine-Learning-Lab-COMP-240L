@@ -1,7 +1,8 @@
 # CCP: Comparative Machine Learning Framework for Heart Disease Prediction
 
 **Course:** COMP-240L Machine Learning Lab  
-**Student:** Ali Hamza  
+**Students:** Ali Hamza & Zarmeena Jawad  
+**Student Numbers:** B23F0063AI106 & B23F0115AI125  
 **Dataset:** Cleveland Heart Disease Dataset  
 **Weightage:** 5%  
 **Submission Deadline:** 10 November 2025
