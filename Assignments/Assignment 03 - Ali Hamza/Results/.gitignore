@@ -1,0 +1,13 @@
+# Ignore generated results files
+*.png
+*.jpg
+*.jpeg
+*.pdf
+*.csv
+*.txt
+*.pkl
+*.joblib
+
+# But keep the directory structure
+!.gitignore
+
